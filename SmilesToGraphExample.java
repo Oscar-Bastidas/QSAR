@@ -13,7 +13,7 @@ import org.openscience.cdk.aromaticity.Aromaticity;
 import org.openscience.cdk.graph.Cycles;
 import org.openscience.cdk.aromaticity.ElectronDonation;
 
-// I needed to use CDK's jar downloaded feom their GitHub to get it to work
+// I needed to use JGNN's jar downloaded feom their GitHub to get it to work
 import mklab.JGNN.core.Matrix;
 import mklab.JGNN.core.matrix.DenseMatrix;
 
