@@ -28,7 +28,7 @@ public class SmilesToGraphExample {
 		// Initialize the SMILES parser
 		SmilesParser sp = new SmilesParser(DefaultChemObjectBuilder.getInstance());
 
-		// Example SMILES for benzene with its experimentally determined binary classifying label of hit or no-hit ("1" or "0" respectively)
+		// Example SMILES for benzene (a chemical/molecule) with its experimentally determined binary classifying label of hit or no-hit ("1" or "0" respectively)
 		String fullData = "c1ccccc1|0";
 		String[] parts = fullData.split("\\|");
 		String smiles = parts[0];
