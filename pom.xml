@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>oscarBastidas</groupId>
+  <artifactId>SMILESToGraph</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>SMILESToGraph</name>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- THIS DEPENDENCY WORKS, BUT DOWNLOADS TOO MUCH, MORE THAN WHAT MY PROJECT NEEDS AND USES TOO MUCH MEMORY -->
+	<dependency>
+		<groupId>org.openscience.cdk</groupId>
+		<artifactId>cdk-bundle</artifactId>
+		<version>2.9</version>
+	</dependency>
+
+
+	<!-- THE FOLLOWING TWO DEPENDENCIES ARE ALL I NEED FOR THE SPECIFIC IMPORT STATEMENTS IN THE JAVA SOURCE CODE 
+	<dependency>
+        	<groupId>org.openscience.cdk</groupId>
+        	<artifactId>cdk-core</artifactId>
+        	<version>2.9</version>
+	</dependency>
+
+    	<dependency>
+        	<groupId>org.openscience.cdk</groupId>
+        	<artifactId>cdk-smiles</artifactId>
+        	<version>2.9</version>
+	</dependency> -->
+
+	<dependency>
+	    <groupId>com.github.MKLab-ITI</groupId>
+	    <artifactId>JGNN</artifactId>
+	    <version>1.3.40</version>
+	</dependency>
+
+
+</dependencies>
+
+	<!-- THE REPOSITORY BELOW WAS FOR TRYING TO GET THE DEPENDENCY FROM MAVEN CENTRAL BUT IT'S NOT WORKING SO I'LL INSTEAD COMMENT THIS AND WORK FROM A MANUAL INSTALLATION OF THE DOWNLOADED JAR FILE
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories> -->
+
+
+<build>
+        <plugins>
+                <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.1</version>
+                        <configuration>
+                                <source>1.8</source>
+                                <target>1.8</target>
+                        </configuration>
+                </plugin>
+
+                <!-- The “maven-shade-plugin” below allows creation of an “uber jar” -->
+                <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                                <execution>
+                                        <phase>package</phase>
+                                        <goals>
+                                                <goal>shade</goal>
+                                        </goals>
+                                        <configuration>
+                                                <transformers>
+                                                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                                                <mainClass>program.SmilesToGraphExample</mainClass>
+                                                        </transformer>
+                                                </transformers>
+                                        </configuration>
+                                </execution>
+                        </executions>
+                </plugin>
+        </plugins>
+</build>
+
+  </project>
